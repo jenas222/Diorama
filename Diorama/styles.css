@@ -1,0 +1,60 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+  background-color: #1a1a1a; /* Tmavé pozadí */
+}
+
+.bubbles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.bubble {
+  position: absolute;
+  width: 20px; /* Velikost bublin */
+  height: 20px; /* Velikost bublin */
+  background-color: #ff0000; /* Červená barva bublin */
+  border-radius: 50%;
+  opacity: 0; /* Před vytvořením bubliny bude mít nulovou průhlednost */
+  animation: bubbleAppear 1s forwards, bubbleMove 20s infinite linear; /* Animace vytvoření a pohybu bublin */
+  box-shadow: 0 0 20px #ff0000; /* Glowing efekt */
+}
+
+@keyframes bubbleAppear {
+  0% {
+    opacity: 0; /* Bublina začíná neviditelná */
+  }
+  100% {
+    opacity: 1; /* Bublina se postupně zviditelní */
+  }
+}
+
+@keyframes bubbleMove {
+  0% {
+    transform: translate(
+        calc(100vw * var(--random-x)),
+        calc(100vh * var(--random-y))
+      )
+      scale(0.6); /* Nastavení náhodné pozice bubliny */
+  }
+  50% {
+    transform: translate(
+        calc(100vw * var(--random-y)),
+        calc(100vh * var(--random-x))
+      )
+      scale(1);
+  }
+  100% {
+    transform: translate(
+        calc(100vw * var(--random-x)),
+        calc(100vh * var(--random-z))
+      )
+      scale(0.8);
+  }
+}
